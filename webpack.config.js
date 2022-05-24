@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //清除dist文�
 module.exports={
   mode: 'development', // none,不压缩  production,压缩 , development,开发环境
 
-  entry: path.resolve(__dirname,'./src/main.js'), // 入口文件
+  entry: path.resolve(__dirname,'./src/main.ts'), // 入口文件
 
   output: {
     path: path.resolve(__dirname, 'dist'), // 输出文件的路径
@@ -17,6 +17,14 @@ module.exports={
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/, // 不编译node_modules下的文件
+        loader: 'ts-loader',
+        options:{
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
       {
         // 加载/提取js文件
         // vue-loader@next 
@@ -54,6 +62,9 @@ module.exports={
   devServer: {
     static: './dist',
     port: 8080,
+  },
+  resolve: {
+    extensions: ['.tsc', '.ts', '.js', '.vue', '.json'],
   }
   // devServer: {
   //   static: './dist', // 告诉服务器从哪里提供内容
