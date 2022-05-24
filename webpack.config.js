@@ -48,6 +48,7 @@ module.exports={
         exclude: /node_modules/, // 不编译node_modules下的文件
         loader: 'babel-loader'
       }
+
     ]
   },
   plugins: [
@@ -72,5 +73,5 @@ module.exports={
   //   open: true, // 自动打开浏览器
   //   hot: true, // 开启热更新
   //   publicPath:"/" // 在开发环境中，配置这个参数，可以让服务器访问静态资源的路径
-  // } 
+  // }
 }
