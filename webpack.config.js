@@ -3,12 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); //打包时引入index
 const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //清除dist文件夹
 
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+  // plugins: [    ......,    //该类型的构造函数要求出入一个数组: 用于指定需要拷贝的文件路径, 可以是一个通配符、目录、文件的相对路径    
 
 
 module.exports={
   mode: 'development', // none,不压缩  production,压缩 , development,开发环境
 
-  entry: path.resolve(__dirname,'./src/main.ts'), // 入口文件
+  entry: path.resolve(__dirname,'./src/main.js'), // 入口文件
 
   output: {
     path: path.resolve(__dirname, 'dist'), // 输出文件的路径
@@ -37,17 +39,30 @@ module.exports={
         // 加载/提取css文件  
         // style-loader
         // css-loader
-        test: /\.css$/,
+        test: /\.css$/i,
+        exclude: /node_modules/,
           use: [
             'style-loader',
-            'css-loader'
+            'css-loader',
           ]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/, // 不编译node_modules下的文件
         loader: 'babel-loader'
-      }
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            }
+          },
+        ],
+       type: 'javascript/auto'
+      },
 
     ]
   },
@@ -58,7 +73,14 @@ module.exports={
       title: '手搭vue开发环境' // 指定模板文件中的变量
     }),
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+
+    // 静态文件资源打包
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: "./public", to: "./public/" 
+      }]
+    })  
   ],
   devServer: {
     static: './dist',

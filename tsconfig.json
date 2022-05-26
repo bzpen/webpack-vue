@@ -1,19 +1,19 @@
-// tsconfig.json
-{
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    // 这样就可以对 `this` 上的数据属性进行更严格的推断
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "node"
-  },
-  // ts 管理的文件
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-  ],
-  // ts 排除的文件
-  "exclude": ["node_modules"]
-}
+// // tsconfig.json
+// {
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "module": "esnext",
+//     // 这样就可以对 `this` 上的数据属性进行更严格的推断
+//     "strict": true,
+//     "jsx": "preserve",
+//     "moduleResolution": "node"
+//   },
+//   // ts 管理的文件
+//   "include": [
+//     "src/**/*.ts",
+//     "src/**/*.tsx",
+//     "src/**/*.vue",
+//   ],
+//   // ts 排除的文件
+//   "exclude": ["node_modules"]
+// }

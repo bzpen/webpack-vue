@@ -12,11 +12,13 @@
     "@vue/compiler-sfc": "^3.2.36",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.8.0-dev.20220523",
+    "url-loader": "^4.1.1",
     "vue": "^3.2.33",
     "vue-loader": "^17.0.0",
     "webpack": "^5.72.1",
@@ -29,5 +31,8 @@
   ],
   "author": "bzpen",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "postcss-preset-env": "^7.6.0"
+  }
 }
